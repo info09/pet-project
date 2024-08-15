@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PetProject.API;
 using PetProject.Core.Domain.Identity;
+using PetProject.Core.SeedWorks;
 using PetProject.Data;
+using PetProject.Data.SeedWorks;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -32,6 +34,9 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 
 // Add services to the container.
+
+builder.Services.AddScoped(typeof(IRepository<,>), typeof(RepositoryBase<,>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
