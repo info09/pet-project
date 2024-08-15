@@ -1,2 +1,2 @@
-# pet-project
-Project demo learning
+# project-base
+Project Base API .NET 8
